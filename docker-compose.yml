@@ -1,0 +1,21 @@
+services:
+    api:
+        image: jaypeng2015/show-me-the-money:latest
+        ports:
+            - "3000:3000"
+
+    backend:
+        build: 
+            context: .
+            dockerfile: ./backend/Dockerfile
+        environment:
+            - API_URL=http://api:3000/api.xro/2.0
+        ports:
+            - "3001:3001"
+
+    frontend:
+        build:
+            context: .
+            dockerfile: ./frontend/Dockerfile
+        ports:
+        - "3002:3002"
