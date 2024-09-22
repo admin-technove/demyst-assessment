@@ -10,13 +10,14 @@ type Props = {
 
 const RowContent: React.FC<Props> = ({ className, rowType, cells }: Props) => {
   if (!cells) {
-    return <></>;
+    return null;
   }
 
   return (
     <tr className={className}>
       {cells.map((col) => (
         <td
+          key={col.Value}
           className={clsx('py-2 px-12 border-b text-sm', {
             'font-bold': rowType === 'SummaryRow',
           })}
